@@ -21,6 +21,19 @@
     "../../LICENSE.txt"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest",
+    "lint": "tslint -c ../../tslint.json 'src/**/*.ts'"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "@types/node-fetch": "^2.5.2",
+    "@types/ws": "^6.0.3",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2",
+    "jest-websocket-mock": "^1.5.1",
+    "mock-socket": "~8.0",
+    "ts-jest": "^24.1.0",
+    "tslint": "5.20.0",
+    "typescript": "^3.6.3"
   }
 }
