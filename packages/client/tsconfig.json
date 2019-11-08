@@ -3,9 +3,14 @@
   "compilerOptions": {
     "strictNullChecks": false,
     "noUnusedLocals": false,
-    "rootDir": "src/"
+    "rootDir": "./src",
+    "outDir": "./dist/cjs"
   },
   "include": [
-    "src/**/*.ts"
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

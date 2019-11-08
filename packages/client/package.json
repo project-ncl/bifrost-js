@@ -12,17 +12,25 @@
   ],
   "author": "Alex Creasy <acreasy@redhat.com>",
   "license": "Apache-2.0",
-  "main": "dist/cjs/index.js",
-  "source": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "README.md",
     "../../LICENSE.txt"
   ],
   "scripts": {
+    "clean": "rm -rf dist/",
+    "nuke": "npm run clean && rm -rf node_modules",
+    "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
     "test": "jest",
-    "lint": "tslint -c ../../tslint.json 'src/**/*.ts'"
+    "pretest": "npm run lint",
+    "compile": "npm run compile:cjs && npm run compile:types",
+    "compile:cjs": "tsc",
+    "compile:types": "tsc --declaration --declarationMap --emitDeclarationOnly --outFile ./dist/index.d.ts",
+    "prebuild": "npm run clean && npm install",
+    "build": "npm run compile"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
