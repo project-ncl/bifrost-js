@@ -2,6 +2,9 @@
   "name": "bifrost-js-root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.18.4"
+    "@types/node": "^12.12.6",
+    "lerna": "^3.18.4",
+    "ts-lint": "^4.5.1",
+    "typescript": "^3.7.2"
   }
 }
