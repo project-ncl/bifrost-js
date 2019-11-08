@@ -1,0 +1,26 @@
+{
+  "name": "@project-ncl/bifrost-client",
+  "version": "0.0.0",
+  "description": "A JavaScript client for Bifrost - An elastic search log streamer",
+  "keywords": [
+    "bifrost",
+    "project-ncl",
+    "elasticsearch",
+    "kibana",
+    "log",
+    "logstreamer"
+  ],
+  "author": "Alex Creasy <acreasy@redhat.com>",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "../../LICENSE.txt"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
