@@ -4,13 +4,9 @@
     "strictNullChecks": false,
     "noUnusedLocals": false,
     "rootDir": "./src",
-    "outDir": "./dist/cjs"
+    "outDir": "./dist",
   },
   "include": [
     "./src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
   ]
 }

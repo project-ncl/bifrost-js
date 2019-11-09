@@ -2,6 +2,7 @@ import { GetLinesDto } from "../src/dto/GetLinesDto";
 import { LineDto } from "../src/dto/LineDto";
 import { BifrostRestClient } from "../src/rest/BifrostRestClient";
 
+
 const getLinesRequest1: GetLinesDto = {
     maxLines: 3,
     prefixFilters: "loggerName.keyword:org.jboss.pnc._userlog_",

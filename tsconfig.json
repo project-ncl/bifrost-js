@@ -2,10 +2,8 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "declaration": false,
-    "declarationMap": false,
+    "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "removeComments": true,
     "strict": true,
@@ -14,10 +12,7 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true
-  },
-  "exlcude": [
-    "node_modules",
-    "dist"
-  ]
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  }
 }

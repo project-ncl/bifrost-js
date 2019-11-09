@@ -4,7 +4,7 @@
     "rootDir": ".."
   },
   "include": [
-    "../src/**/*.ts",
-    "."
+    "../**/*.ts",
+    "../setupJest.ts"
   ]
 }
