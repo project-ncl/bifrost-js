@@ -1,0 +1,23 @@
+{
+  "name": "@project-ncl/bifrost-web-component",
+  "version": "0.0.0",
+  "description": "A Web Component for displaying Bifrost streams",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "bifrost",
+    "project-ncl",
+    "elasticsearch",
+    "log",
+    "logstreamer",
+    "webcomponent"
+  ],
+  "files": [
+    "dist",
+    "../../LICENSE.txt"
+  ],
+  "author": "Alex Creasy <acreasy@redhat.com>",
+  "license": "Apache-2.0"
+}
