@@ -1,0 +1,50 @@
+{
+  "name": "@project-ncl/bifrost-client",
+  "version": "0.0.0",
+  "description": "A JavaScript client for Bifrost - An elastic search log streamer",
+  "keywords": [
+    "bifrost",
+    "project-ncl",
+    "elasticsearch",
+    "kibana",
+    "log",
+    "logstreamer"
+  ],
+  "author": "Alex Creasy <acreasy@redhat.com>",
+  "license": "Apache-2.0",
+  "main": "./dist/main/index.js",
+  "module": "./dist/module/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "../../LICENSE.txt"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "nuke": "npm run clean && rm -rf node_modules",
+    "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
+    "test": "jest",
+    "pretest": "npm run lint",
+    "compile": "run-p compile:*",
+    "compile:main": "tsc --outDir ./dist/main",
+    "compile:module": "tsc --module ES2015 --outDir ./dist/module",
+    "compile:types": "tsc --declaration --declarationMap --emitDeclarationOnly --outFile ./dist/index.d.ts",
+    "prebuild": "npm run clean && npm install && npm run test",
+    "build": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "@types/node-fetch": "^2.5.2",
+    "@types/ws": "^6.0.3",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2",
+    "jest-websocket-mock": "^1.5.1",
+    "mock-socket": "~8.0",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^24.1.0",
+    "tslint": "5.20.0",
+    "typescript": "^3.6.3"
+  }
+}
