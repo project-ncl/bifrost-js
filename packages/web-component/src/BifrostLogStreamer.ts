@@ -4,19 +4,51 @@ const template: HTMLTemplateElement = document.createElement("template");
 
 template.innerHTML = `
 <style>
-    .log-container {
+    .bifrost-container {
+
+        --bifrost-content-bgcolor: 37, 37, 37;
+        --bifrost-content-color: 186, 193, 202;
+        --bifrost-toolbar-bgcolor: 51, 51 ,51;
+        --bifrost-toolbar-color: 161, 164, 161;
+
         position: relative;
-        background-color: #293134;
         font-family: 'Source Code Pro', monospace;
+        font-weight: light;
+        font-size: 9pt;
+        scroll-behavior: smooth;
+        background-color: rgba(var(--bifrost-toolbar-bgcolor), 1.0);
+    }
+
+    .bifrost-toolbar {
+        position: sticky;
+        opacity: 0.8;
+        top: 0;
+        background-color: rgba(var(--bifrost-toolbar-bgcolor), 1.0);
+        padding: 10px;
+    }
+
+    .bifrost-content {
+        background-color: rgba(var(--bifrost-content-bgcolor), 1.0);
+        color: rgba(var(--bifrost-content-color), 1.0);
         word-wrap: break-word;
-        color: #E0E2E4;
         padding: 0 20px;
     }
     .log-line {
         width: 100%;
     }
 </style>
-<div class="log-container"></div>
+<div class="bifrost-container">
+    <div id="bifrost-top">&nbsp;</div>
+    <div class="bifrost-toolbar">
+        <button id="btn-go-bottom">To Bottom</button>
+        <button id="btn-go-top">To Top</button>
+        <button id="btn-toggle-follow">Follow</button>
+    </div>
+    <div class="bifrost-content">
+        <div class="log-line">&nbsp;</div>
+    </div>
+    <div id="bifrost-bottom">&nbsp;</div>
+</div>
 `;
 
 export class BifrostLogStreamer extends HTMLElement {
@@ -25,6 +57,8 @@ export class BifrostLogStreamer extends HTMLElement {
 
     private buffer?: BufferedLogWriter;
 
+    private follow: boolean = false;
+
     public constructor() {
         super();
         const root: ShadowRoot = this.attachShadow({ mode: "open" });
@@ -32,8 +66,11 @@ export class BifrostLogStreamer extends HTMLElement {
     }
 
     public connectedCallback(): void {
-        this.logContainer = this.$(".log-container") as HTMLDivElement;
+        this.logContainer = this.$(".bifrost-content") as HTMLDivElement;
         this.buffer = new BufferedLogWriter(this.logContainer);
+
+        this.$("#btn-go-bottom").addEventListener("click", () => this.scrollToBottom());
+        this.$("#btn-go-top").addEventListener("click", () => this.scrollToTop());
     }
 
     public appendLine(text: string): void {
@@ -43,6 +80,18 @@ export class BifrostLogStreamer extends HTMLElement {
 
     public appendLines(text: string[]): void {
         this.logContainer.appendChild(this.createFragment(text));
+    }
+
+    public scrollToBottom(): void {
+        this.$("#bifrost-bottom").scrollIntoView();
+    }
+
+    public scrollToTop(): void {
+        this.$("#bifrost-top").scrollIntoView();
+    }
+
+    public toggleFollow(): void {
+        this.follow = !this.follow;
     }
 
     private $(selector: string): HTMLElement | null {
