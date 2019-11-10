@@ -2,11 +2,14 @@
   "extends": "../../tsconfig",
   "compilerOptions": {
     "strictNullChecks": false,
-    "noUnusedLocals": false,
-    "rootDir": "./src",
-    "outDir": "./dist"
+    "module": "es2015",
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "es2015"
+    ]
   },
   "include": [
-    "./src/**/*.ts"
+    "src/**/*.ts"
   ]
 }
