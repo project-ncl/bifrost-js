@@ -1,4 +1,4 @@
-import { BufferedLogWriter } from "./BufferedLogWriter.js";
+import { BufferedLogWriter } from "./BufferedLogWriter";
 
 const template: HTMLTemplateElement = document.createElement("template");
 

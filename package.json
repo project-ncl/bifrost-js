@@ -1,6 +1,6 @@
 {
-  "name": "bifrost-js-root",
   "private": true,
+  "name": "@project-ncl/bifrost-js-root",
   "devDependencies": {
     "@types/node": "^12.12.6",
     "lerna": "^3.18.4",
