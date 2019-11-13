@@ -1,11 +1,15 @@
 export class BufferedLogWriter {
 
+    private readonly MAX_FLUSH_SIZE = 10;
+
     private appendBuffer: Node[] = [];
     private prependBuffer: Node[] = [];
 
     private containerElement: ParentNode;
 
     private scheduled: boolean = false;
+
+    private postFlushCb: () => any | null;
 
     constructor(containerElement: ParentNode) {
         this.containerElement = containerElement;
@@ -22,6 +26,10 @@ export class BufferedLogWriter {
         this.prependBuffer.push(node);
     }
 
+    public onPostFlush(callback: () => void): void {
+        this.postFlushCb = callback;
+    }
+
     private schedule(): void {
         if (this.scheduled) {
             return;
@@ -30,15 +38,23 @@ export class BufferedLogWriter {
         this.scheduled = true;
         window.requestAnimationFrame(() => {
             this.flushAppendBuffer();
+            if (this.postFlushCb) {
+                this.postFlushCb();
+            }
             this.flushPrependBuffer();
             this.scheduled = false;
         });
     }
 
     private flushAppendBuffer(): void {
-        while (this.appendBuffer.length > 0) {
-            this.containerElement.append(this.appendBuffer.shift());
+        const frag: DocumentFragment = new DocumentFragment();
+
+
+        for (let i = 0; this.appendBuffer.length > 0 && i < this.MAX_FLUSH_SIZE; i++) {
+            frag.appendChild(this.appendBuffer.shift());
         }
+
+        this.containerElement.append(frag);
     }
 
     private flushPrependBuffer(): void {

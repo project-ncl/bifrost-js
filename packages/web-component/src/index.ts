@@ -1,1 +1,1 @@
-export { BifrostLogStreamer } from "./BifrostLogStreamer";
+export { LogViewer } from "./LogViewer";
