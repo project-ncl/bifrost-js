@@ -1,6 +1,6 @@
-export class BufferedLogWriter {
+export default class BufferedLogWriter {
 
-    private readonly MAX_FLUSH_SIZE = 10;
+    private readonly MAX_FLUSH_SIZE = 25;
 
     private appendBuffer: Node[] = [];
     private prependBuffer: Node[] = [];
@@ -47,21 +47,24 @@ export class BufferedLogWriter {
     }
 
     private flushAppendBuffer(): void {
-        const frag: DocumentFragment = new DocumentFragment();
-
-
-        for (let i = 0; this.appendBuffer.length > 0 && i < this.MAX_FLUSH_SIZE; i++) {
-            frag.appendChild(this.appendBuffer.shift());
+        if (this.appendBuffer.length > 0) {
+            this.containerElement.append(this.doFlush(this.appendBuffer));
         }
-
-        this.containerElement.append(frag);
     }
 
     private flushPrependBuffer(): void {
-        while (this.prependBuffer.length > 0) {
-            this.containerElement.prepend(this.prependBuffer.shift());
+        if (this.prependBuffer.length > 0) {
+            this.containerElement.prepend(this.doFlush(this.prependBuffer));
         }
     }
 
+    private doFlush(buffer: Node[]): DocumentFragment {
+        const frag: DocumentFragment = new DocumentFragment();
 
+        for (let i = 0; this.appendBuffer.length > 0 && i < this.MAX_FLUSH_SIZE; i++) {
+            frag.appendChild(buffer.shift());
+        }
+
+        return frag;
+    }
 }

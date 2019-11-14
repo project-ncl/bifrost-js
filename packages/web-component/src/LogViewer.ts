@@ -1,4 +1,4 @@
-import { BufferedLogWriter } from "./BufferedLogWriter";
+import BufferedLogWriter from "./BufferedLogWriter";
 
 const template: HTMLTemplateElement = document.createElement("template");
 
@@ -80,7 +80,7 @@ template.innerHTML = `
 </div>
 `;
 
-export class LogViewer extends HTMLElement {
+export default class LogViewer extends HTMLElement {
 
     private logContainer!: HTMLDivElement;
 
@@ -102,7 +102,7 @@ export class LogViewer extends HTMLElement {
         this.$("#btn-go-bottom").addEventListener("click", () => this.scrollToBottom());
         this.$("#btn-go-top").addEventListener("click", () => this.scrollToTop());
         this.$("#btn-toggle-follow").addEventListener("click", () => this.toggleFollow());
-
+        this.$("#btn-load-more").addEventListener("click", () => this.dispatchEvent(new CustomEvent("onLoadMore")));
     }
 
     public appendLine(text: string): void {
@@ -111,6 +111,14 @@ export class LogViewer extends HTMLElement {
 
     public appendLines(text: string[]): void {
         this.logContainer.appendChild(this.createFragment(text));
+    }
+
+    public prependLine(text: string): void {
+        this.logContainer.prepend(this.createLineElement(text));
+    }
+
+    public prependLines(text: string[]): void {
+        this.logContainer.prepend(this.createFragment(text));
     }
 
     public scrollToBottom(): void {
@@ -139,7 +147,6 @@ export class LogViewer extends HTMLElement {
         } else {
             elem.setAttribute("class", "line");
         }
-        //elem.setAttribute("class", "line");
         elem.appendChild(document.createTextNode(text));
         return elem;
     }

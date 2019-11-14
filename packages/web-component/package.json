@@ -16,7 +16,7 @@
     "compile:main": "tsc --outDir ./dist/main",
     "compile:module": "tsc --module ES2015 --outDir ./dist/module",
     "compile:types": "tsc --module ES2015 --declaration --declarationMap --emitDeclarationOnly --outDir ./dist/types",
-    "prebuild": "npm run clean && npm install && npm run lint",
+    "prebuild": "npm run clean && npm run lint",
     "build": "npm run compile"
   },
   "keywords": [
@@ -38,5 +38,7 @@
     "tslint": "^5.20.1",
     "typescript": "^3.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@project-ncl/bifrost-client": "^0.0.0"
+  }
 }
