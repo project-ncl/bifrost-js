@@ -1,4 +1,6 @@
-export class BufferedLogWriter {
+export default class BufferedLogWriter {
+
+    private readonly MAX_FLUSH_SIZE = 25;
 
     private appendBuffer: Node[] = [];
     private prependBuffer: Node[] = [];
@@ -6,6 +8,8 @@ export class BufferedLogWriter {
     private containerElement: ParentNode;
 
     private scheduled: boolean = false;
+
+    private postFlushCb: () => any | null;
 
     constructor(containerElement: ParentNode) {
         this.containerElement = containerElement;
@@ -22,6 +26,10 @@ export class BufferedLogWriter {
         this.prependBuffer.push(node);
     }
 
+    public onPostFlush(callback: () => void): void {
+        this.postFlushCb = callback;
+    }
+
     private schedule(): void {
         if (this.scheduled) {
             return;
@@ -30,22 +38,33 @@ export class BufferedLogWriter {
         this.scheduled = true;
         window.requestAnimationFrame(() => {
             this.flushAppendBuffer();
+            if (this.postFlushCb) {
+                this.postFlushCb();
+            }
             this.flushPrependBuffer();
             this.scheduled = false;
         });
     }
 
     private flushAppendBuffer(): void {
-        while (this.appendBuffer.length > 0) {
-            this.containerElement.append(this.appendBuffer.shift());
+        if (this.appendBuffer.length > 0) {
+            this.containerElement.append(this.doFlush(this.appendBuffer));
         }
     }
 
     private flushPrependBuffer(): void {
-        while (this.prependBuffer.length > 0) {
-            this.containerElement.prepend(this.prependBuffer.shift());
+        if (this.prependBuffer.length > 0) {
+            this.containerElement.prepend(this.doFlush(this.prependBuffer));
         }
     }
 
+    private doFlush(buffer: Node[]): DocumentFragment {
+        const frag: DocumentFragment = new DocumentFragment();
 
+        for (let i = 0; this.appendBuffer.length > 0 && i < this.MAX_FLUSH_SIZE; i++) {
+            frag.appendChild(buffer.shift());
+        }
+
+        return frag;
+    }
 }
