@@ -12,6 +12,9 @@
   ],
   "author": "Alex Creasy <acreasy@redhat.com>",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/main/index.js",
   "module": "./dist/module/index.js",
   "source": "./src/index.ts",

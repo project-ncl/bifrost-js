@@ -32,6 +32,9 @@
   ],
   "author": "Alex Creasy <acreasy@redhat.com>",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "tslint": "^5.20.1",
