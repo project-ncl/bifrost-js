@@ -1,6 +1,6 @@
 {
   "name": "@project-ncl/bifrost-client",
-  "version": "0.1.0-ER.1",
+  "version": "0.1.0-ER.2",
   "description": "A JavaScript client for Bifrost - An elastic search log streamer",
   "keywords": [
     "bifrost",
@@ -12,6 +12,9 @@
   ],
   "author": "Alex Creasy <acreasy@redhat.com>",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/main/index.js",
   "module": "./dist/module/index.js",
   "source": "./src/index.ts",
