@@ -1,6 +1,11 @@
 {
   "private": true,
   "name": "@project-ncl/bifrost-js-root",
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "build": "lerna run build",
+    "test": "lerna run test"
+  },
   "devDependencies": {
     "@types/node": "^12.12.6",
     "lerna": "^3.18.4",

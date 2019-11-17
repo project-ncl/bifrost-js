@@ -11,7 +11,6 @@
     "nuke": "npm run clean && rm -rf node_modules",
     "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
     "pretest": "npm run lint",
-    "test": "echo \"not yet implemented\"; exit 1",
     "compile": "run-p compile:*",
     "compile:main": "tsc --outDir ./dist/main",
     "compile:module": "tsc --module ES2015 --outDir ./dist/module",
