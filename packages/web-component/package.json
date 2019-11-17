@@ -1,6 +1,6 @@
 {
   "name": "@project-ncl/bifrost-web-component",
-  "version": "0.1.0-ER.1",
+  "version": "0.1.0-ER.2",
   "description": "A Web Component for displaying Bifrost streams",
   "main": "dist/main/index.ts",
   "module": "dist/module/index.ts",
@@ -41,6 +41,6 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "@project-ncl/bifrost-client": "^0.1.0-ER.1"
+    "@project-ncl/bifrost-client": "^0.1.0-ER.2"
   }
 }
