@@ -1,6 +1,6 @@
 {
-  "name": "bifrost-angularjs",
-  "description": "Bifrost log streamer angular-js component",
+  "name": "bifrost-js",
+  "description": "Bifrost log streamer web bundle",
   "repository": {
     "type": "git",
     "url": "https://github.com/project-ncl/bifrost-js.git"
