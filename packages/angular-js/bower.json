@@ -1,7 +1,17 @@
 {
   "name": "bifrost-web-bundle",
   "description": "Bifrost log streamer angular-js component",
-  "main": "dist/bifrosft-web-bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-ncl/bifrost-js.git"
+  },
+  "main": "dist/bifrost-angularjs.js",
+  "moduleType": [
+    "globals",
+    "amd",
+    "es6",
+    "node"
+  ],
   "authors": [
     "Alex Creasy <acreasy@redhat.com>"
   ],
@@ -12,5 +22,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
 }

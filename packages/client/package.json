@@ -1,6 +1,10 @@
 {
   "name": "@project-ncl/bifrost-client",
   "version": "0.1.0-ER.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-ncl/bifrost-js.git"
+  },
   "description": "A JavaScript client for Bifrost - An elastic search log streamer",
   "keywords": [
     "bifrost",

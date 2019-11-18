@@ -1,8 +1,13 @@
 {
   "name": "@project-ncl/bifrost-angular-js",
   "version": "0.1.0-ER.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-ncl/bifrost-js.git"
+  },
   "description": "Bifrost log streamer angular-js component",
-  "main": "bower-dist/bifrost-angular-js.js",
+  "main": "dist/bifrost-angularjs.js",
+  "module": "src/index.js",
   "author": "Alex Creasy <acreasy@redhat.com>",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -21,6 +26,8 @@
     "angular": "^1.5.8"
   },
   "scripts": {
+    "clean": "rm -rf dist && rm -rf bower_components",
+    "nuke": "npm run clean && rm -rf node_modules && rm -rf bower_components",
     "build": "rollup -c"
   }
 }
