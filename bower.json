@@ -1,0 +1,29 @@
+{
+  "name": "bifrost-angularjs",
+  "description": "Bifrost log streamer angular-js component",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-ncl/bifrost-js.git"
+  },
+  "main": "packages/angular-js/dist/bifrost-angularjs.js",
+  "moduleType": [
+    "globals",
+    "amd",
+    "es6",
+    "node"
+  ],
+  "authors": [
+    "Alex Creasy <acreasy@redhat.com>"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}

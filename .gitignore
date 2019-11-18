@@ -2,6 +2,12 @@ dist
 tmp
 .rts2_cache*
 
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
 ### dotenv ###
 .env
 
@@ -97,7 +103,7 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# react / gatsby 
+# react / gatsby
 public/
 
 # vuepress build output

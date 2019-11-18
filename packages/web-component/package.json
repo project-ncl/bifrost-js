@@ -1,6 +1,10 @@
 {
   "name": "@project-ncl/bifrost-web-component",
   "version": "0.1.0-ER.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-ncl/bifrost-js.git"
+  },
   "description": "A Web Component for displaying Bifrost streams",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
