@@ -1,11 +1,11 @@
 {
-  "name": "bifrost-web-bundle",
+  "name": "bifrost-angularjs",
   "description": "Bifrost log streamer angular-js component",
   "repository": {
     "type": "git",
     "url": "https://github.com/project-ncl/bifrost-js.git"
   },
-  "main": "dist/bifrost-angularjs.js",
+  "main": "packages/angular-js/dist/bifrost-angularjs.js",
   "moduleType": [
     "globals",
     "amd",
