@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "@project-ncl/bifrost-js-root",
+  "version": "0.1.0-ER.3",
   "scripts": {
     "postinstall": "lerna bootstrap",
     "build": "lerna run build",
