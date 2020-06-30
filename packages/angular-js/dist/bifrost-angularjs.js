@@ -170,6 +170,9 @@
             this.$("#top").scrollIntoView();
         }
         toggleFollow() {
+            if (!this.follow) {
+                this.scrollToBottom();
+            }
             this.follow = !this.follow;
         }
         $(selector) {
