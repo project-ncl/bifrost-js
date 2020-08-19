@@ -148,7 +148,6 @@
             this.$("#btn-go-bottom").addEventListener("click", () => this.scrollToBottom());
             this.$("#btn-go-top").addEventListener("click", () => this.scrollToTop());
             this.$("#btn-toggle-follow").addEventListener("click", () => this.toggleFollow());
-            this.$("#btn-load-more").addEventListener("click", () => this.dispatchEvent(new CustomEvent("onLoadMore")));
         }
         appendLine(text) {
             this.buffer.queueAppend(this.createLineElement(text));
