@@ -73,7 +73,6 @@ template.innerHTML = `
         <button id="btn-go-top">&#9650; Top</button>
         <button id="btn-go-bottom">&#9660; End</button>
         <button id="btn-toggle-follow">Follow</button>
-        <button id="btn-load-more">&#9650; Load more</button>
     </div>
     <div class="content"></div>
     <span id="end"></span>
@@ -102,7 +101,6 @@ export default class LogViewer extends HTMLElement {
         this.$("#btn-go-bottom").addEventListener("click", () => this.scrollToBottom());
         this.$("#btn-go-top").addEventListener("click", () => this.scrollToTop());
         this.$("#btn-toggle-follow").addEventListener("click", () => this.toggleFollow());
-        //this.$("#btn-load-more").addEventListener("click", () => this.dispatchEvent(new CustomEvent("onLoadMore")));
     }
 
     public appendLine(text: string): void {
