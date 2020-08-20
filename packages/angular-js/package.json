@@ -1,6 +1,6 @@
 {
   "name": "@project-ncl/bifrost-angular-js",
-  "version": "0.1.0-ER.4",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/project-ncl/bifrost-js.git"
@@ -19,8 +19,8 @@
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
-    "@project-ncl/bifrost-client": "^0.1.0-ER.4",
-    "@project-ncl/bifrost-web-component": "^0.1.0-ER.4"
+    "@project-ncl/bifrost-client": "^0.1.0",
+    "@project-ncl/bifrost-web-component": "^0.1.0"
   },
   "peerDependencies": {
     "angular": "^1.5.8"
