@@ -128,7 +128,6 @@
         <button id="btn-go-top">&#9650; Top</button>
         <button id="btn-go-bottom">&#9660; End</button>
         <button id="btn-toggle-follow">Follow</button>
-        <button id="btn-load-more">&#9650; Load more</button>
     </div>
     <div class="content"></div>
     <span id="end"></span>
