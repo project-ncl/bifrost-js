@@ -484,11 +484,14 @@
             this.disconnect();
         }
         init() {
-            this.client.subscribe(this.subscriptionParams, line => {
+            this.client.subscribe(this.subscriptionParams, (line) => {
                 if (this.topLine === null) {
                     this.topLine = line;
                 }
                 this.logViewer.appendLine(`[${line.timestamp}] ${line.message}`);
+                if (line.stackTrace) {
+                    this.logViewer.appendLine(`Stack Trace: ${line.stackTrace}`);
+                }
             });
         }
         async loadMore() {

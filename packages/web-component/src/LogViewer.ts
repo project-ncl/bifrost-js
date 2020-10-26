@@ -149,6 +149,7 @@ export default class LogViewer extends HTMLElement {
             elem.setAttribute("class", "line");
         }
         elem.appendChild(document.createTextNode(text));
+
         return elem;
     }
 

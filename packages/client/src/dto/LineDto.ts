@@ -16,4 +16,6 @@ export interface LineDto {
     exp?: string;
 
     subscriptionTopic?: string;
+
+    stackTrace?: string;
 }
