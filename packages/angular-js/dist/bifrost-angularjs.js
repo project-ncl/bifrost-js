@@ -432,9 +432,9 @@
         constructor(host, verbose = false) {
             this.subscriptionStore = {};
             this.host = host;
-            this.rpcClient = new BifrostJsonRpcClient(`ws://${this.host}/socket`, verbose);
+            this.rpcClient = new BifrostJsonRpcClient(`wss://${this.host}/socket`, verbose);
             this.rpcClient.onMessage(result => this.onReceiveResult(result));
-            this.restClient = new BifrostRestClient(`http://${this.host}/`);
+            this.restClient = new BifrostRestClient(`https://${this.host}/`);
         }
         close() {
             return this.rpcClient.close();

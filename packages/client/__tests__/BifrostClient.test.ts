@@ -6,7 +6,7 @@ import { LineDto } from "../src/dto/LineDto";
 describe("Bifrost client", () => {
 
     const SERVER_HOST: string = "localhost:7890";
-    const WS_URL: string = `ws://${SERVER_HOST}/socket`;
+    const WS_URL: string = `wss://${SERVER_HOST}/socket`;
 
     let server: WS;
     let client: BifrostClient;
