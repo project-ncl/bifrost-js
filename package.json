@@ -7,10 +7,11 @@
     "url": "https://github.com/project-ncl/bifrost-js.git"
   },
   "scripts": {
-    "postinstall": "lerna bootstrap --hoist",
-    "prebuild": "npm install && npm test",
-    "build": "lerna run build",
-    "test": "lerna run test"
+    "bootstrap": "lerna bootstrap --hoist",
+    "bootstrap:ci": "lerna bootstrap --ci",
+    "build": "lerna run build --stream",
+    "lint": "lerna run lint --stream",
+    "test": "lerna run test --stream"
   },
   "devDependencies": {
     "@types/node": "^12.12.6",
