@@ -47,7 +47,7 @@ describe("Bifrost REST client", () => {
 
     beforeEach(() => {
         fetchMock.resetMocks();
-        restClient = new BifrostRestClient("http://localhost");
+        restClient = new BifrostRestClient("https://localhost");
     });
 
     it("should call the correct URL with correct serialized params when making a GetLines request", async () => {
@@ -56,6 +56,6 @@ describe("Bifrost REST client", () => {
         await restClient.getLines(getLinesRequest1);
 
         expect(fetchMock.mock.calls.length).toEqual(1);
-        expect(fetchMock.mock.calls[0][0]).toEqual("http://localhost?maxLines=3&prefixFilters=loggerName.keyword:org.jboss.pnc._userlog_&matchFilters=mdc.processContext.keyword:build-294&afterLine=%7B%22id%22%3A%22log%23AW2wFneHGrAoEh-YUBAB%22%2C%22last%22%3Afalse%2C%22logger%22%3A%22org.jboss.pnc._userlog_.build-log%22%2C%22message%22%3A%22%2B%20mvn%20clean%20deploy%5Cn%22%2C%22timestamp%22%3A%222019-10-09T10%3A35%3A25.336Z%22%7D&direction=DESC");
+        expect(fetchMock.mock.calls[0][0]).toEqual("https://localhost?maxLines=3&prefixFilters=loggerName.keyword:org.jboss.pnc._userlog_&matchFilters=mdc.processContext.keyword:build-294&afterLine=%7B%22id%22%3A%22log%23AW2wFneHGrAoEh-YUBAB%22%2C%22last%22%3Afalse%2C%22logger%22%3A%22org.jboss.pnc._userlog_.build-log%22%2C%22message%22%3A%22%2B%20mvn%20clean%20deploy%5Cn%22%2C%22timestamp%22%3A%222019-10-09T10%3A35%3A25.336Z%22%7D&direction=DESC");
     });
 });

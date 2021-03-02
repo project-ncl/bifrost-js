@@ -28,7 +28,7 @@ const mockGetLines1: JsonRpcRequestParams = {
 
 
 describe("JsonRpcClient", () => {
-    const WS_URL: string = "ws://localhost:7890";
+    const WS_URL: string = "wss://localhost:7890";
     let server: WS;
     let client: BifrostJsonRpcClient;
 
