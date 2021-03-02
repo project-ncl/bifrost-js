@@ -4,6 +4,9 @@ import { SubscribeDto } from "../src/dto/SubscribeDto";
 import { BifrostJsonRpcClient } from "../src/json-rpc/BifrostJsonRpcClient";
 import { JsonRpcRequestParams } from "../src/json-rpc/JsonRpcRequest";
 import { JsonRpcResult } from "../src/json-rpc/JsonRpcResult";
+import { FetchMock } from 'jest-fetch-mock';
+
+const fetchMock = fetch as FetchMock;
 
 const mockResult1: JsonRpcResult = {
     result: {

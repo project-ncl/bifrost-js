@@ -2,6 +2,9 @@ import WS from "jest-websocket-mock";
 import { BifrostClient } from "../src/BifrostClient";
 import { GetLinesDto } from "../src/dto/GetLinesDto";
 import { LineDto } from "../src/dto/LineDto";
+import { FetchMock } from 'jest-fetch-mock';
+
+const fetchMock = fetch as FetchMock;
 
 describe("Bifrost client", () => {
 

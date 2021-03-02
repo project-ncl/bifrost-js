@@ -1,7 +1,9 @@
 import { GetLinesDto } from "../src/dto/GetLinesDto";
 import { LineDto } from "../src/dto/LineDto";
 import { BifrostRestClient } from "../src/rest/BifrostRestClient";
+import { FetchMock } from 'jest-fetch-mock';
 
+const fetchMock = fetch as FetchMock;
 
 const getLinesRequest1: GetLinesDto = {
     maxLines: 3,
