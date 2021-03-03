@@ -33,12 +33,11 @@
     "nuke": "npm run clean && rm -rf node_modules",
     "lint": "tslint -c ../../tslint.json 'src/**/*.ts'",
     "test": "jest",
-    "pretest": "npm run lint",
     "compile": "run-p compile:*",
     "compile:main": "tsc --outDir ./dist/main",
     "compile:module": "tsc --module ES2015 --outDir ./dist/module",
     "compile:types": "tsc --module ES2015 --declaration --declarationMap --emitDeclarationOnly --outDir ./dist/types",
-    "prebuild": "npm run clean && npm install && npm run test",
+    "prebuild": "npm run clean",
     "build": "npm run compile"
   },
   "devDependencies": {
