@@ -1,4 +1,4 @@
-import { LineDto } from "./LineDTO";
+import { LineDto } from "./LineDto";
 
 export interface GetLinesDto {
 

@@ -1,7 +1,7 @@
 
 import BifrostClient from "@project-ncl/bifrost-client";
 import { GetLinesDto } from "@project-ncl/bifrost-client/dist/types/dto/GetLinesDto";
-import { LineDto } from "@project-ncl/bifrost-client/dist/types/dto/LineDTO";
+import { LineDto } from "@project-ncl/bifrost-client/dist/types/dto/LineDto";
 import { SubscribeDto } from "@project-ncl/bifrost-client/dist/types/dto/SubscribeDto";
 import LogViewer from "./LogViewer";
 

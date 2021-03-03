@@ -1,5 +1,5 @@
 import { GetLinesDto } from "../dto/GetLinesDto";
-import { LineDto } from "../dto/LineDTO";
+import { LineDto } from "../dto/LineDto";
 import { processResponse, queryStringify } from "./Helpers";
 
 export class BifrostRestClient {
