@@ -3,7 +3,7 @@
 Mono-repo library for Bifrost log streamer web bundle
 - client - A JavaScript client for Bifrost(An elastic search log streamer);
 - angular-js - Bifrost log streamer angular-js component, module that bridge the library with angular-js.
-- demo - A simple demo to give an example of how to use bifrost-js library;
+- demo - [CURRENTLY UNAVAILABLE] A simple demo to give an example of how to use bifrost-js library;
 - web-component - A Web Component for displaying Bifrost streams.
 
 ## Prerequisites
