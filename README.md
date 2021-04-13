@@ -12,11 +12,11 @@ Mono-repo library for Bifrost log streamer web bundle
 
 ## Build project
 - `git clone https://github.com/project-ncl/bifrost-js.git bifrost-js`
-- `cd bifrost-js`
+- `cd ./bifrost-js／`
 - `npm install `
 
 - `npm run bootstrap`
-  - run install for all components(use Lerna Hoisting to hoisting dependencies up to the topmost);
+  - run install for all components(use Lerna Hoisting to hoist dependencies up to the topmost);
 
 - `npm run build`
   - transpile TypeScript to JavaScript, output: packages/<component_name>/dist/(it's accessible via bower.json main property).
