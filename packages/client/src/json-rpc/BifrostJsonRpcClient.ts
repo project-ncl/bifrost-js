@@ -17,8 +17,8 @@ export class BifrostJsonRpcClient {
 
     private deferredManager: DeferredManager<JsonRpcId, Result> = new DeferredManager();
 
-    private messageListeners: Array<Consumer<Result>> = [];
-    private errorListeners: Array<Consumer<JsonRpcError>> = [];
+    private messageListeners: Consumer<Result>[] = [];
+    private errorListeners: Consumer<JsonRpcError>[] = [];
 
     private preOpenQueue: JsonRpcRequest[] = [];
 
