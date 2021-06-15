@@ -15,14 +15,11 @@ Mono-repo library for Bifrost log streamer web bundle
 - `cd ./bifrost-js／`
 - `npm install `
 
-- `npm run bootstrap`
-  - run install for all components(use Lerna Hoisting to hoist dependencies up to the topmost);
-
 - `npm run build`
+  - run install for all components(use Lerna Hoisting to hoist dependencies up to the topmost);
   - transpile TypeScript to JavaScript, output: packages/<component_name>/dist/(it's accessible via bower.json main property).
-
-- `npm run test`
   - run tests available in bifrost-js/
+
 
 ## Release
 - we're using bower as package manager in main ui project that's using this library, it's 
