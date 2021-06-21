@@ -9,7 +9,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
     "bootstrap:ci": "lerna bootstrap --ci",
-    "build": "lerna run build --stream",
+    "build": "lerna bootstrap --hoist && lerna run build --stream && lerna run test --stream",
     "lint": "lerna run lint --stream",
     "test": "lerna run test --stream"
   },
