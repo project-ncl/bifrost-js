@@ -10,6 +10,11 @@ Mono-repo library for Bifrost log streamer web bundle
 
 - locall instalation of **Node** and **npm**
 
+Once the pre-reqs have been taken care of, run:
+
+    npm install -g grunt-cli
+
+
 ## Build project
 - `git clone https://github.com/project-ncl/bifrost-js.git bifrost-js`
 - `cd ./bifrost-js／`

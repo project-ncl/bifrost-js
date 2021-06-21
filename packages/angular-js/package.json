@@ -16,7 +16,9 @@
   "devDependencies": {
     "bower": "^1.8.8",
     "rollup": "^1.27.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "grunt": "^1.4.1",
+    "grunt-contrib-uglify": "^5.0.1"
   },
   "dependencies": {
     "@project-ncl/bifrost-client": "^0.1.4",
@@ -28,6 +30,6 @@
   "scripts": {
     "clean": "rm -rf dist && rm -rf bower_components",
     "nuke": "npm run clean && rm -rf node_modules && rm -rf bower_components",
-    "build": "rollup -c"
+    "build": "rollup -c && grunt"
   }
 }
