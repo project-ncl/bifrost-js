@@ -21,5 +21,18 @@ Mono-repo library for Bifrost log streamer web bundle
   - run tests available in bifrost-js/
 
 ## Release
-- we're using bower as package manager in main ui project that's using this library, it's 
-  enough to create signed tag in github and new version will be picked up by bower.
+Release process:
+1) Create & checkout version branch (0.1.5 for example)
+2) Update versions for root package and sub packages:
+
+	2.1 `npx lerna version 0.1.5 --no-git-tag-version --no-push --force-publish`
+
+	2.2 Manually update root package.json version
+
+3) `npm run build`
+4) Commit all changes and raise a PR
+5) After merging the PR pull the changes locally
+6) Tag the release with a semver compatible version (for example v0.1.5)
+7) `git push upstream --tags`
+
+8) (Not doing right now) `npm publish`
