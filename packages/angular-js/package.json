@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "bower": "^1.8.8",
-    "rollup": "^1.27.0",
+    "rollup": "^3.2.5",
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
