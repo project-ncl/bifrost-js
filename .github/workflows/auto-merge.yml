@@ -23,7 +23,7 @@ jobs:
       - name: Enable auto-merge (rebase) for a PR for patch and minor update starting with caret
         if: ${{startsWith(steps.dependabot-metadata.outputs.previous-version, '^') && (steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' || steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor')}}
         run: |
-          gh pr comment $PR_URL --body "Pull request **auto-merged** because it is a patch or minor update"
+          gh pr comment $PR_URL --body "This pull request is automatically **merged** because it is a *patch* or *minor* update and the original version starts with a caret."
           gh pr merge --auto --rebase "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
@@ -31,7 +31,7 @@ jobs:
       - name: Comment a PR for patch and minor update not starting with caret
         if: ${{!startsWith(steps.dependabot-metadata.outputs.previous-version, '^') && (steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' || steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor')}}
         run: |
-          gh pr comment $PR_URL --body "Pull request **not auto-merged** because original version of update does not start with a caret"
+          gh pr comment $PR_URL --body "This pull request requires manual review because it is *minor* or *patch* update, but the original version does not start with a caret."
           gh pr edit $PR_URL --add-label "requires-manual-testing"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
@@ -39,7 +39,7 @@ jobs:
       - name: Comment a PR for major update
         if: ${{steps.dependabot-metadata.outputs.update-type == 'version-update:semver-major'}}
         run: |
-          gh pr comment $PR_URL --body "Pull request **not auto-merged** because it is a major update"
+          gh pr comment $PR_URL --body "This pull request requires manual review because it is a **major** update."
           gh pr edit $PR_URL --add-label "requires-manual-testing"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
