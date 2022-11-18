@@ -76,7 +76,7 @@ export default class BifrostLogViewer extends HTMLElement {
             const resp = await this.client.getLines(req);
             lines = resp.map(line => `[${line.timestamp}] ${line.message}`);
             this.topLine = resp[0];
-        } catch (e) {
+        } catch (e: any) {
             console.error(`Error fetching lines: ${ e.message }`);
         }
 

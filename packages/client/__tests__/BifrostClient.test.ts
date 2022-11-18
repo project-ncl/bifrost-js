@@ -3,6 +3,7 @@ import { BifrostClient } from "../src/BifrostClient";
 import { GetLinesDto } from "../src/dto/GetLinesDto";
 import { LineDto } from "../src/dto/LineDto";
 import { FetchMock } from 'jest-fetch-mock';
+import { Client } from "mock-socket";
 
 const fetchMock = fetch as FetchMock;
 
@@ -13,7 +14,7 @@ describe("Bifrost client", () => {
 
     let server: WS;
     let client: BifrostClient;
-    let clientSocket: WebSocket;
+    let clientSocket: Client;
 
     beforeEach(async () => {
         server = new WS(WS_URL, { jsonProtocol: true });
@@ -30,7 +31,7 @@ describe("Bifrost client", () => {
     });
 
     it("should connect to the WebSocket", async () => {
-        const socketInstance: WebSocket | null = await server.connected;
+        const socketInstance: Client | null = await server.connected;
 
         expect(socketInstance).not.toBeNull();
     });
