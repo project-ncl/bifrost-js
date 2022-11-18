@@ -36,3 +36,7 @@ Release process:
 7) `git push upstream --tags`
 
 8) (Not doing right now) `npm publish`
+
+## GitHub Workflows and Dependabot
+
+To see more details about our GitHub Workflows and Dependabot, open [documentation/workflows.md](./documentation/workflows.md).
