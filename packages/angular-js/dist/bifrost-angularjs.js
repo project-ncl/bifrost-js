@@ -1,16 +1,18 @@
-/* bifrost-angularjs [v0.1.4] Tue Jun 22 2021*/
+/* bifrost-angularjs [v0.1.4] Fri Nov 18 2022*/
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.bifrost = factory());
-}(this, (function () { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bifrost = factory());
+})(this, (function () { 'use strict';
 
     class BufferedLogWriter {
+        MAX_FLUSH_SIZE = 25;
+        appendBuffer = [];
+        prependBuffer = [];
+        containerElement;
+        scheduled = false;
+        postFlushCb;
         constructor(containerElement) {
-            this.MAX_FLUSH_SIZE = 25;
-            this.appendBuffer = [];
-            this.prependBuffer = [];
-            this.scheduled = false;
             this.containerElement = containerElement;
         }
         queueAppend(node) {
@@ -57,8 +59,8 @@
         }
     }
 
-    const template = document.createElement("template");
-    template.innerHTML = `
+    const template$1 = document.createElement("template");
+    template$1.innerHTML = `
 <style>
     [data-theme="dark"] {
         --lv-text-color: rgb(186, 193, 202);
@@ -135,11 +137,13 @@
 </div>
 `;
     class LogViewer extends HTMLElement {
+        logContainer;
+        buffer;
+        follow = false;
         constructor() {
             super();
-            this.follow = false;
             const root = this.attachShadow({ mode: "open" });
-            root.appendChild(template.content.cloneNode(true));
+            root.appendChild(template$1.content.cloneNode(true));
         }
         connectedCallback() {
             this.logContainer = this.$(".content");
@@ -212,6 +216,9 @@
     }
 
     class Deferred {
+        promise;
+        resolve;
+        reject;
         constructor() {
             this.promise = new Promise((resolve, reject) => {
                 this.resolve = resolve;
@@ -221,9 +228,7 @@
     }
 
     class DeferredManager {
-        constructor() {
-            this.deferreds = new Map();
-        }
+        deferreds = new Map();
         defer(key) {
             const deffered = new Deferred();
             this.deferreds.set(key, deffered);
@@ -249,6 +254,8 @@
     }
 
     class Logger {
+        prefix;
+        verbose;
         constructor(prefix = "", verbose = false) {
             this.prefix = prefix;
             this.verbose = verbose;
@@ -291,12 +298,15 @@
     }
 
     class BifrostJsonRpcClient {
+        url;
+        logger;
+        ws;
+        requestCounter = 0;
+        deferredManager = new DeferredManager();
+        messageListeners = [];
+        errorListeners = [];
+        preOpenQueue = [];
         constructor(url, verbose = false) {
-            this.requestCounter = 0;
-            this.deferredManager = new DeferredManager();
-            this.messageListeners = [];
-            this.errorListeners = [];
-            this.preOpenQueue = [];
             this.logger = new Logger("BifrostJsonRpcClient", verbose);
             this.url = url;
             this.connect();
@@ -304,7 +314,7 @@
         close() {
             return new Promise(resolve => {
                 if (this.ws.readyState === this.ws.CLOSED) {
-                    resolve();
+                    resolve(undefined);
                     return;
                 }
                 this.ws.addEventListener("close", event => resolve(event));
@@ -417,6 +427,7 @@
     }
 
     class BifrostRestClient {
+        url;
         constructor(url) {
             this.url = url;
         }
@@ -430,8 +441,11 @@
     }
 
     class BifrostClient {
+        host;
+        rpcClient;
+        restClient;
+        subscriptionStore = {};
         constructor(host, verbose = false) {
-            this.subscriptionStore = {};
             this.host = host;
             this.rpcClient = new BifrostJsonRpcClient(`wss://${this.host}/socket`, verbose);
             this.rpcClient.onMessage(result => this.onReceiveResult(result));
@@ -459,18 +473,22 @@
         }
     }
 
-    const template$1 = document.createElement("template");
-    template$1.innerHTML = `
+    const template = document.createElement("template");
+    template.innerHTML = `
 <log-viewer></log-viewer>
 `;
     class BifrostLogViewer extends HTMLElement {
+        bifrostHost;
+        subscriptionParams;
+        client;
+        logViewer;
+        topLine = null;
         constructor(bifrostHost, subscriptionParams) {
             super();
-            this.topLine = null;
             this.bifrostHost = bifrostHost;
             this.subscriptionParams = subscriptionParams;
             this.attachShadow({ mode: "open" });
-            this.shadowRoot.appendChild(template$1.content.cloneNode(true));
+            this.shadowRoot.appendChild(template.content.cloneNode(true));
         }
         disconnect() {
             this.client.close();
@@ -556,4 +574,4 @@
 
     return bifrost;
 
-})));
+}));
