@@ -1,0 +1,31 @@
+name: Dependabot dependency update workflow
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot-comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Comment a PR for patch and minor update
+        if: ${{steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' || steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor'}}
+        run: |
+          gh pr comment $PR_URL --body "This pull request is a `minor` or `patch` dependency update. Based on `package.json`, developer needs to decide whether it's safe to merge it"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Comment a PR for major update
+        if: ${{steps.dependabot-metadata.outputs.update-type == 'version-update:semver-major'}}
+        run: |
+          gh pr comment $PR_URL --body "This pull request is a `major` dependency update. Before merging, breaking changes need to be investigated, possible changes have to be implemented and tested"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
