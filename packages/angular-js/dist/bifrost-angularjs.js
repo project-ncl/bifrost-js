@@ -1,4 +1,4 @@
-/* bifrost-angularjs [v0.1.4] Fri Nov 18 2022*/
+/* bifrost-angularjs [v0.1.4] Tue Nov 29 2022*/
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
