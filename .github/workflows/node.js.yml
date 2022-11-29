@@ -26,6 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: node --version && npm --version
+    - run: npm install -g npm@^9.1.0
+    - run: npm --version
     - run: npm ci
     - run: npm run bootstrap:ci
     - run: npm run lint
