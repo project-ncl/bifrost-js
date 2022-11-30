@@ -8,7 +8,7 @@ Mono-repo library for Bifrost log streamer web bundle
 
 ## Prerequisites
 
-- locall instalation of **Node** and **npm**
+See `"engines"` in [package.json](./package.json) for minimum version requirements (for example `node` and `npm`).
 
 ## Build project
 - `git clone https://github.com/project-ncl/bifrost-js.git bifrost-js`
