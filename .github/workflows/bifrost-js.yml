@@ -7,12 +7,12 @@ name: bifrost-js CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
-    - cron:  '00 03 * * *'
-    - cron:  '00 11 * * *'
+    - cron: "00 03 * * *"
+    - cron: "00 11 * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,21 +23,23 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # Each version of Node.js specified in the node-version array creates a job that runs the same steps.
+        # Skipped using 14.x to avoid https://github.com/npm/cli/issues/558#issuecomment-580018468
+        node-version: [18.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: node --version && npm --version
-    - run: npm install -g npm@^9.1.0
-    - run: npm --version
-    - run: npm ci
-    - run: npm run bootstrap:ci
-    - run: npm run lint
-    - run: npm run build
-    - run: npm test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: node --version && npm --version
+      - run: npm install -g npm@^9.1.0
+      - run: npm --version
+      - run: npm ci
+      - run: npm run bootstrap:ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm test
