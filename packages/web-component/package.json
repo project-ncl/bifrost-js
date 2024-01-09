@@ -47,7 +47,7 @@
     "@project-ncl/bifrost-client": "^0.1.4"
   },
   "engines": {
-    "node": "^18.12.0",
-    "npm": "^9.1.0"
+    "node": "^20.10.0",
+    "npm": "^10.2.5"
   }
 }
