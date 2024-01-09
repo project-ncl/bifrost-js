@@ -14,14 +14,14 @@
     "test": "lerna run test --stream"
   },
   "devDependencies": {
-    "@types/node": "^18.0.0",
+    "@types/node": "^20.0.0",
     "lerna": "^6.0.3",
     "lerna-audit": "^1.3.3",
     "ts-lint": "^4.5.1",
     "typescript": "^4.9.3"
   },
   "engines": {
-    "node": "^18.12.0",
-    "npm": "^9.1.0"
+    "node": "^20.10.0",
+    "npm": "^10.2.5"
   }
 }
